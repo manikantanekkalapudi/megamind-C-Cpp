@@ -1,26 +1,12 @@
 #include <stdio.h>
 #include<stdlib.h>
-struct UpperTriangularMatrix
+struct LowerTriangularMatrix
 {
     int *A;
     int n;
 };
 
-void EnterElements(int[] mat, )
-printf("Enter all the elements:\n");
-
-    for(i=1; i<=mat.n; i++)
-    {
-        for(j=1; j<=mat.n; j++)
-        {
-            scanf("%d", &x);
-            Set(&mat, i, j, x);
-        }
-    }
-    
-    printf("\n\n");
-
-void Set(struct UpperTriangularMatrix *m, int i, int j, int x)
+void Set(struct LowerTriangularMatrix *m, int i, int j, int x)
 {
     if(i >= j)
     {
@@ -28,7 +14,22 @@ void Set(struct UpperTriangularMatrix *m, int i, int j, int x)
     }
 }
 
-int Get(struct UpperTriangularMatrix m, int i, int j)
+void Create(struct LowerTriangularMatrix *m){
+    int x, i=0, j=0;
+    printf("Enter all the elements:\n");
+
+    for(i=1; i<=m->n; i++)
+    {
+        for(j=1; j<=m->n; j++)
+        {
+            scanf("%d", &x);
+            Set(&m, i, j, x);
+        }
+    }
+    printf("\n\n");
+}
+
+int Get(struct LowerTriangularMatrix m, int i, int j)
 {
     if(i >= j)
     {
@@ -41,7 +42,7 @@ int Get(struct UpperTriangularMatrix m, int i, int j)
     
 }
 
-void Display(struct UpperTriangularMatrix m)
+void Display(struct LowerTriangularMatrix m)
 {
     int i, j;
 
@@ -64,7 +65,7 @@ void Display(struct UpperTriangularMatrix m)
 
 int main()
 {
-    struct UpperTriangularMatrix mat;
+    struct LowerTriangularMatrix mat;
     int i,j,x, choice;
     printf("Enter Dimension fo the matrix: ");
     scanf("%d", &mat.n);
@@ -73,15 +74,30 @@ int main()
 
     do
     {
-        printf("1. Enter all the elements");
+        printf("1. Create Array");
         printf("2. Set");
         printf("3. Get");
         printf("4. Display");
         printf("Enter the choice: ");
         scanf("%d", &choice);
+
+        switch (choice)
+        {
+        case 1:
+            Create(&mat);
+            break;
+        case 2:
+            Set(&mat, 1, 0, 5);
+            break;
+        case 3:
+            printf("%d", Get(mat, 3, 3));
+            break;
+        case 4:
+            Display(mat);
+            break;
+        default:
+            break;
+        }
     }while (choice<5);
-    
-    
-     
-    Display(mat);
+
 }

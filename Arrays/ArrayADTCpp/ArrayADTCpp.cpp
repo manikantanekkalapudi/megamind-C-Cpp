@@ -6,52 +6,56 @@ using namespace std;
 
 class Array
 {
+    // Declaring the private variables and method under private access modifier
     private:
         // int pointer for the Array of integer type
-        // int *A;
         int *A;
-        int size;
-        int length;
+        int size; // final size of the array or max elements that an array can hold
+        int length; // no. of elements that are currently in the array
         void swap(int *x, int *y);
-
+    
+    // Declaring the public constructor to the Array class and destructor method for the same
     public:
+        // Array class constructor
         Array()
         {
-            size = 10;
-            length = 0;
-            A = new int[size];
+            size = 10; // size of the array is fixed to 10 elements
+            length = 0; // initial length is set to zero
+            A = new int[size]; // Array is declared with size of 10 elements
         }
+        // parameterized constructor for Array class
         Array(int sz)
         {
-            size = sz;
-            length = 0;
-            A = new int[size];
+            size = sz; //size of the Array is taken as an input to the constructor using 'sz'
+            length = 0; // initial length is set to zero
+            A = new int[size]; // Array is declared with the given size
         }
-
+        // Destructor to delete the Array object
         ~Array()
         {
             delete []A;
         }
 
-void DisplayArrayElements();
-void Append(int element);
-void Insert(int index, int element);
-int Delete(int index);
-int LinearSearch(int key);
-int LinearSearch_transposition(int key);
-int LinearSearch_movetohead(int key);
-int BinarySearch(int key);
+// Defining all the functions for the Array class
+void DisplayArrayElements(); // displays all the elements
+void Append(int element); // add an element at the end of the array if length < size
+void Insert(int index, int element); // inserts a given element at a given index in the array
+int Delete(int index); // deletes the element at a given index
+int LinearSearch(int key); // searches for an element in the array sequentially and returns the index
+int LinearSearch_transposition(int key); // searches for an element in the array sequentially and if element is found it returns the index, it'll move it one step towards head
+int LinearSearch_movetohead(int key); // searches for an element in the array sequentially and if element is found it returns the index, it'll move it to head
+int BinarySearch(int key); // searches the sorted array by dividing the array into two halves at each step
 //int RecurciveBinarySearch(int a[], int l, int h, int key);
-int Get(int index);
-void Set(int index, int x);
-int Max();
-int Min();
-int Sum();
-float Avg();
-void LeftShift_Reverse();
+int Get(int index); // gets index of an element
+void Set(int index, int x); // set the value at an index to the given element
+int Max(); // max value in the array
+int Min(); // min value in the array
+int Sum(); // sum of all the elements in the array
+float Avg(); // avg of all the elements in the array
+void LeftShift_Reverse(); 
 void LeftShift_Reverse2();
-bool isSorted(int length);
-void insertsort( int ele);
+bool isSorted(int length); // checks if the array is sorted 
+void insertsort(int ele);
 void rearrange_posandneg();
 Array* MergeArrays(Array arr2);
 Array* SetUnion(Array arr2);

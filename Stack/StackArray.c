@@ -3,9 +3,9 @@
 
 struct Stack
 {
-    int Size;
-    int Top;
-    int *s;
+    int Size; //Size of the stack
+    int Top; //Top element of the stack
+    int *s; // Pointer to the Array
 };
 
 void Create(struct Stack *st)
@@ -30,7 +30,7 @@ void Push(struct Stack *st, int x)
 {
     if(st->Top == st->Size-1)
     {
-        printf("\nStack Overflow!\n");
+        printf("\nStack Overflow!\n"); //<3
     }
     else
     {

@@ -5,26 +5,27 @@
 
 struct Node
 {
-    int data;
-    struct Node *next;
+    int data; // Data stored in the node
+    struct Node *next; // Self-referential pointer to point next node in the linked list
 }*first=NULL,*second=NULL,*third=NULL; //These become global pointers
 
 void create(int A[], int n)
 {
     int i;
     struct Node *t, *last;
-    first = (struct Node *)malloc(sizeof(struct Node));
-    first->data = A[0];
-    first->next = NULL;
-    last = first;
+    first = (struct Node *)malloc(sizeof(struct Node)); // Creating first node 
+    first->data = A[0]; // Assigning 0th array index value to first node in the Linked List
+    first->next = NULL; // first node's next will point to next node
+    last = first; // last node will point to first node.
 
+    // for loop to access all the elements in the array from index 1 to n
     for(i=1; i<n; i++)
     {
-        t = (struct Node *)malloc(sizeof(struct Node *)); 
-        t->data = A[i];
-        t->next = NULL;
-        last->next = t;
-        last = t;
+        t = (struct Node *)malloc(sizeof(struct Node *)); // Creating a temp node in head for each value in the array
+        t->data = A[i]; // Assigning temp node's data with array element
+        t->next = NULL; // Assigning temp node's next to NULL
+        last->next = t; // Previous last node's next will be assigned to temp node
+        last = t; // last node is moved to t node
     }
 }
 void create2(int A[], int n)
@@ -50,20 +51,22 @@ void create2(int A[], int n)
 
 void Display(struct Node *p)
 {
+    // Iterate through the Linked List as long as p is not NULL using a while loop
     while(p != NULL)
     {
-        printf("%d->",p->data);
-        p=p->next;
+        printf("%d->",p->data); // Print the data.
+        p=p->next; // p pointing to next node of p
     }
 }
 
 int count(struct Node *p)
 {
-    int len = 0;
+    int len = 0; // Initial length is assigned to 0
+    // Iterate through the Linked List as long as p is not NULL using a while loop
     while(p != NULL)
     {
-        len++;
-        p = p->next;
+        len++; // Increment len by 1 for each node
+        p = p->next; // move p to nxt node
     }
     return len;
 }
